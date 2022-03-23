@@ -1,4 +1,5 @@
-#include<csapp.h>
+#include"csapp_alter.h"
+#include"tinyweb.h"
 
 char* get_status_name(int status_code,char* status_name){
     if(status_code==100)
@@ -89,11 +90,9 @@ char* get_status_name(int status_code,char* status_name){
 }
 
 void client_error(int fd,int status_code,char* msg){
-    char headers[MAXLINE];
-    char body[MAXLINE];
-    char status_name[40];
-    memset(headers,0,sizeof(headers));
-    memset(body,0,sizeof(body));
+    char headers[MAXLINE]={};
+    char body[MAXLINE]={};
+    char status_name[40]={};
 
     if(get_status_name(status_code,status_name)==NULL){
         strcpy(status_name,"user-define");
@@ -109,4 +108,7 @@ void client_error(int fd,int status_code,char* msg){
     
     Rio_writen(fd,headers,strlen(headers));
     Rio_writen(fd,body,strlen(body));
+    printf("fd=%d\tclient error response headers:\n%s",fd,headers);
+
+    fflush(stdout);
 }

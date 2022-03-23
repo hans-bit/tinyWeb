@@ -1,0 +1,15 @@
+--通过进程间通信实现控制器和web服务沟通--
+
+1.log增加时间(精确到毫秒).
+2.增加后台:暂停(stop)/恢复(restart)/结束(exit web)web服务,打印总共处理过的连接数量(print cnt_total_connect),打印当前连接(正在处理的+在buf中还未处理的)数量(print cnt_connect),help命令(一种是命令行help,一种是启动程序加--help参数),version命令(一种是命令行version,一种是启动程序加--version参数)
+3.重新指定线程数量(thread num num>1)
+4.退出控制器(exit)
+5.控制器命令输入界面:
+tinyWebPid|目前状态|总共处理过的连接数量|当前连接数量|>命令
+4821|running|3149934|23|>
+6.改成c/c++实现.
+7.每个线程一个log输出文本http_output_num.log
+
+
+
+
